@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-06-06T17:33:18+08:00</updated>
+  <updated>2019-06-06T17:51:40+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -22,7 +22,8 @@
 
 <p>针对大量小内存分配场景下（例如，企业通讯录，每个用户信息对应一个json node），系统调用malloc/calloc等重复向系统申请内存资源，导致系统性能低下。</p>
 
-<p>&lt;!—more—></p>
+<!--more-->
+
 
 <h1>解决方案</h1>
 
@@ -78,7 +79,12 @@
     <link href="http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/"/>
     <updated>2019-06-06T16:18:17+08:00</updated>
     <id>http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke</id>
-    <content type="html"><![CDATA[<h2>环境配置</h2>
+    <content type="html"><![CDATA[<p>博客作为一种技术总结以及交流的载体，已经成为大多数码农提升自我，帮助他人的必备平台之一。本文将总结一下搭建博客的一些流程。基于搭建便捷性角度出发，本文采用github + octopress搭建个人博客。</p>
+
+<!--more-->
+
+
+<h2>环境配置</h2>
 
 <ul>
 <li><p>安装ruby</p>
