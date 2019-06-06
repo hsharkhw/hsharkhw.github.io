@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-06-06T17:09:46+08:00</updated>
+  <updated>2019-06-06T17:27:59+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -205,10 +205,12 @@
 
 <p>博客主流评论模块，包括，“Disqus”， “多说”等，但是前者是美国的评论系统，国内受限制，无法访问；后者，在国内曾经十分流行，但是目前网站已经停止提供服务。</p>
 
-<p>因此，经过多方对比，在保证可用性的前提下，最终选择了gitalk评论系统。使用该系统，需要进行如下操作：</p>
+<p>因此，经过多方对比，在保证可用性的前提下，最终选择了commenthub评论系统。使用该系统，需要进行如下操作：</p>
 
 <ul>
-<li>在github申请<code>Client ID</code>和<code>Client Secret</code>两串密钥，并在_config.yml添加对应字段。</li>
+<li>在<a href="https://commenthub.herokuapp.com">commenthub官网</a>申请ID, 并填写博客地址进行绑定。</li>
+<li>在_config.yml配置<code>commenthub_id</code>。</li>
+<li>在_layouts/post.html中添加一下代码，显示评论模块。</li>
 </ul>
 
 
@@ -216,14 +218,18 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>comment_gitalk_clientId: ******                                              
-</span><span class='line'>comment_gitalk_clientSecret: ******                                          
-</span><span class='line'>comment_gitalk_repo: ***.github.io                                           
-</span><span class='line'>github_username: ***                                                         </span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>  &lt;section&gt;
+</span><span class='line'>    &lt;h1&gt;评论&lt;/h1&gt;
+</span><span class='line'>    &lt;div id="commenthub_thread" aria-live="polite"&gt;&lt;/div&gt;
+</span><span class='line'>  &lt;/section&gt;
+</span><span class='line'>                                                         </span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
-<li>在source/_layout/post.html中通过以下代码调用gitalk。</li>
+<li>创建commenthub.html文件</li>
 </ul>
 
 
@@ -244,42 +250,56 @@
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>                                                
-</span><span class='line'>  &lt;section&gt;                                                                   
-</span><span class='line'>    &lt;h1&gt;Comments&lt;/h1&gt;                                                         
-</span><span class='line'>    &lt;!-- Gitalk start --&gt;                                                     
-</span><span class='line'>    &lt;div id="gitalk-container"&gt;&lt;/div&gt;                                         
-</span><span class='line'>    &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"&gt;
-</span><span class='line'>    &lt;script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"&gt;&lt;/script&gt;
-</span><span class='line'>    &lt;script&gt;                                                                  
-</span><span class='line'>        var gitalk  = new Gitalk ({                                           
-</span><span class='line'>            id: window.location.pathname,   // Ensure uniqueness and length less than 50
-</span><span class='line'>            clientID: '{ {site.comment_gitalk_clientId} }',                   
-</span><span class='line'>            clientSecret: '{ {site.comment_gitalk_clientSecret} }',           
-</span><span class='line'>            repo: '{ {site.comment_gitalk_repo} }',                           
-</span><span class='line'>            owner: '{ {site.github_username} }',                              
-</span><span class='line'>            admin: ['{ {site.github_username} }'],                            
-</span><span class='line'>                distractionFreeMode: false  // Facebook-like distraction free mode
-</span><span class='line'>        })                                                                    
-</span><span class='line'>        gitalk.render('gitalk-container')                                     
-</span><span class='line'>    &lt;/script&gt;                                                                 
-</span><span class='line'>    &lt;!-- Gitalk end --&gt;                                                       
-</span><span class='line'>  &lt;/section&gt;                                                                  
-</span><span class='line'> </span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;script type="text/javascript"&gt;
+</span><span class='line'>    var commenthub_id = '5024203';
+</span><span class='line'>    var commenthub_website = 'http://hsharkhw.github.io';
+</span><span class='line'>    var commenthub_identifier = '/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+</span><span class='line'>    var commenthub_url = 'http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+</span><span class='line'>    var commenthub_title = '基于github pages搭建个人博客';
+</span><span class='line'>    (function () {
+</span><span class='line'>        var dsq = document.createElement('script');
+</span><span class='line'>        dsq.type = 'text/javascript';
+</span><span class='line'>        dsq.async = true;
+</span><span class='line'>        dsq.src = 'https://commenthub.herokuapp.com/js/embed.js';
+</span><span class='line'>        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+</span><span class='line'>    }());
+</span><span class='line'>&lt;/script&gt;
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
 
 
-<p>其中，<code>comment_gitalk_clientId</code>和<code>comment_gitalk_clientSecret</code>为第一步中申请的两串密钥。</p>
+<ul>
+<li>在_includes/after_foot.html中引入commenthub.html。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+
+<script type="text/javascript">
+    var commenthub_id = '5024203';
+    var commenthub_website = 'http://hsharkhw.github.io';
+    var commenthub_identifier = '/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+    var commenthub_url = 'http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+    var commenthub_title = '基于github pages搭建个人博客';
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = 'https://commenthub.herokuapp.com/js/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+ </span></code></pre></td></tr></table></div></figure>
+
 
 <h1>参考文章</h1>
 
 <ul>
 <li><a href="https://aerolith.ink/2018/08/25/Gitalk/">Add Gitalk to Your Jekyll Blog</a></li>
-<li><a href="http://www.voidcn.com/article/p-cntpqvhg-bse.html">Commenthub —— 多说、网易云跟帖的替代品</a></li>
+<li><a href="http://www.majiang.life/blog/octopress-and-hexo-comments-widget/">Commenthub —— 多说、网易云跟帖的替代品</a></li>
 <li><a href="http://toughcoder.net/blog/2014/10/16/blogging-like-a-hacker-with-github-pages/">码农的救赎：使用Github Pages搭建博客</a></li>
 <li><a href="http://wiki.11ten.net/Knowledge-Management/octopress%EF%BC%8Dblog.html">octopress－blog</a></li>
 </ul>
