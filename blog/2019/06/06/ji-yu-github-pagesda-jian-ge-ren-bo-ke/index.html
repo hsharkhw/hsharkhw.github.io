@@ -9,7 +9,7 @@
   <meta name="author" content="hshark">
 
   
-  <meta name="description" content="环境配置 安装ruby 安装ruby容易出现问题 git软件 配置ssh-key 将本地公钥添加到github，具体位置为：个人头像->setting->ssh and gpg keys。 创建git-pages 注意新建的git-pages，必须为username.github.io。 &hellip;">
+  <meta name="description" content="环境配置 安装ruby 安装ruby容易出现问题 brew install ruby gem install bundler bundle install gem env home // 确保gem目录在用户目录而不是系统目录 git软件 配置ssh-key 将本地公钥添加到github， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,13 +88,19 @@
 <div class="entry-content"><h2>环境配置</h2>
 
 <ul>
-<li>安装ruby
+<li><p>安装ruby</p>
 
 <ul>
 <li>安装ruby容易出现问题</li>
 </ul>
-</li>
-<li>git软件
+
+
+<pre><code class="`"> brew install ruby
+ gem install bundler
+ bundle install
+ gem env home // 确保gem目录在用户目录而不是系统目录
+</code></pre></li>
+<li><p>git软件</p>
 
 <ul>
 <li>配置ssh-key
@@ -139,8 +145,20 @@
 </ul>
 
 
-<pre><code class="`"> rake setup_github_pages
- rake generate
+<pre><code class="`"> rake setup_github_pages 
+</code></pre>
+
+<p> 此命令将进行一系列初始化操作：</p>
+
+<pre><code>- 询问github pages的仓库url。
+- 将imathis/octopress远程点的名称’origin’修改为’octopress’。
+- 加入你的github pages库作为默认的'origin'远程点。
+- 切换活动分支从主分支到源分支。
+- 根据你的库url配置你的博客url。
+- 在_deploy文件夹设置一个master分支用于部署。
+</code></pre>
+
+<pre><code class="`"> rake generate
  rake preview // 本地预览，http://localhost:4000
  rake deploy  // 发布静态网页内容到github主分支
  rake new_post["title"] // 添加新的博客
@@ -165,7 +183,7 @@
  git push origin source
 </code></pre>
 
-<p> 上述命令将博客开发源代码提交到github source分支。</p></li>
+<p> 上述命令将博客开发源代码提交到github pages仓库source分支。</p></li>
 </ul>
 
 
@@ -175,7 +193,7 @@
 添加此模块到side需要：</p>
 
 <ul>
-<li>在source/_includes/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</li>
+<li>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</li>
 </ul>
 
 
@@ -184,12 +202,12 @@
 
 
 <ul>
-<li>在_confi .yml中修改关于asides的设置。</li>
+<li>在_config.yml中修改关于asides的设置。</li>
 </ul>
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, asides/clustrmaps.html]</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/clustrmaps.html]</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>评论模块</h2>
@@ -314,6 +332,12 @@
   </footer>
 </article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="commenthub_thread" aria-live="polite"></div>
+  </section>
+
+
 </div>
 
 <aside class="sidebar">
@@ -336,10 +360,6 @@
 
 
 
-<section>
-  <h1>About Me</h1>
-  <p>A little something about me.</p>
-</section>
 <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=nJI5&d=2H0OQ02d8uBJIg9VnkGuUqMj1MjqZWK_EiTLVUYhoaY"></script>
 
   
@@ -371,6 +391,24 @@
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
+
+
+
+
+<script type="text/javascript">
+    var commenthub_id = '5024203';
+    var commenthub_website = 'http://hsharkhw.github.io';
+    var commenthub_identifier = '/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+    var commenthub_url = 'http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+    var commenthub_title = '基于github pages搭建个人博客';
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = 'https://commenthub.herokuapp.com/js/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
