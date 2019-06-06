@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-06-06T16:29:42+08:00</updated>
+  <updated>2019-06-06T16:36:28+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -117,44 +117,29 @@
 <ul>
 <li>安装</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'>cd octopress
-</span><span class='line'>bundle install
-</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
-
-
-<pre><code>  - 使用
-</code></pre>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages
-</span><span class='line'>rake generate
-</span><span class='line'>rake preview // 本地预览，http://localhost:4000
-</span><span class='line'>rake deploy  // 发布静态网页内容到github主分支
-</span><span class='line'>rake new_post["title"] // 添加新的博客
-</span><span class='line'>rake new_page["title"] // 添加新的页面，例如tab</span></code></pre></td></tr></table></div></figure>
-
-
-<pre><code>  如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake ***解决。
+<pre><code class="`"> git clone git://github.com/imathis/octopress.git octopress
+ cd octopress
+ bundle install
+ rake install
 </code></pre>
 
 <ul>
-<li> 目录结构
+<li>使用</li>
+</ul>
+
+
+<pre><code class="`"> rake setup_github_pages
+ rake generate
+ rake preview // 本地预览，http://localhost:4000
+ rake deploy  // 发布静态网页内容到github主分支
+ rake new_post["title"] // 添加新的博客
+ rake new_page["title"] // 添加新的页面，例如tab
+</code></pre>
+
+<p> 如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake ***解决。</p></li>
+<li>目录结构
 
 <ul>
 <li>source目录为相关模版文件；</li>
@@ -162,19 +147,18 @@
 <li>public目录为最终推送到github的文件列表，从_deploy拷贝而来。</li>
 </ul>
 </li>
-<li> 源代码提交</li>
+<li>源代码提交</li>
 </ul>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m "your message"
-</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+<pre><code class="`"> git add .
+ git commit -m "your message"
+ git push origin source
+</code></pre>
 
+<p> 上述命令将博客开发源代码提交到github source分支。</p></li>
+</ul>
 
-<p>   上述命令将博客开发源代码提交到github source分支。</p>
 
 <h2>访问统计模块</h2>
 
