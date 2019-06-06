@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-06-06T17:27:59+08:00</updated>
+  <updated>2019-06-06T17:33:18+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -21,6 +21,8 @@
     <content type="html"><![CDATA[<h1>背景</h1>
 
 <p>针对大量小内存分配场景下（例如，企业通讯录，每个用户信息对应一个json node），系统调用malloc/calloc等重复向系统申请内存资源，导致系统性能低下。</p>
+
+<p>&lt;!—more—></p>
 
 <h1>解决方案</h1>
 
