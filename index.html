@@ -207,95 +207,9 @@
 <ul>
 <li>安装</li>
 </ul>
-
-
-<pre><code class="`">git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-bundle install
-rake install
-</code></pre>
-
-<ul>
-<li>使用</li>
-</ul>
-
-
-<pre><code class="`"> rake setup_github_pages
- rake generate
- rake preview // 本地预览，http://localhost:4000
- rake deploy  // 发布静态网页内容到github主分支
- rake new_post["title"] // 添加新的博客
- rake new_page["title"] // 添加新的页面，例如tab
-</code></pre>
-
-<p> 如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake ***解决。</p></li>
-<li>目录结构
-
-<ul>
-<li>source目录为相关模版文件；</li>
-<li>_deploy目录为根据source目录中相关模块，生成静态文件；</li>
-<li>public目录为最终推送到github的文件列表，从_deploy拷贝而来。</li>
+</li>
 </ul>
 </li>
-<li>源代码提交</li>
-</ul>
-
-
-<pre><code class="`">  git add .
-  git commit -m "your message"
-  git push origin source
-</code></pre>
-
-<p> 上述命令将博客开发源代码提交到github source分支。</p></li>
-</ul>
-
-
-<h2>访问统计模块</h2>
-
-<p>clustrmap可以统计网页访问量，并能够在地图显示访问者地理位置分布，访问趋势等。<br>
-添加此模块到side需要：</p>
-
-<ul>
-<li>在source/_includes/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=***"&gt;&lt;/script&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>在_confi .yml中修改关于asides的设置。</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, asides/clustrmaps.html]</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>评论模块</h2>
-
-<p>博客主流评论模块，包括，“Disqus”， “多说”等，但是前者是美国的评论系统，国内受限制，无法访问；后者，在国内曾经十分流行，但是目前网站已经停止提供服务。</p>
-
-<p>因此，经过多方对比，在保证可用性的前提下，最终选择了gitalk评论系统。使用该系统，需要进行如下操作：</p>
-
-<ul>
-<li>在github申请<code>Client ID</code>和<code>Client Secret</code>两串密钥，并在_config.yml添加对应字段。</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>comment_gitalk_clientId: ******                                              
-</span><span class='line'>comment_gitalk_clientSecret: ******                                          
-</span><span class='line'>comment_gitalk_repo: ***.github.io                                           
-</span><span class='line'>github_username: ***                                                         </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>在source/_layout/post.html中通过以下代码调用gitalk。</li>
 </ul>
 
 
@@ -306,46 +220,121 @@ rake install
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>                                                
-</span><span class='line'>  &lt;section&gt;                                                                   
-</span><span class='line'>    &lt;h1&gt;Comments&lt;/h1&gt;                                                         
-</span><span class='line'>    &lt;!-- Gitalk start --&gt;                                                     
-</span><span class='line'>    &lt;div id="gitalk-container"&gt;&lt;/div&gt;                                         
-</span><span class='line'>    &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"&gt;
-</span><span class='line'>    &lt;script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"&gt;&lt;/script&gt;
-</span><span class='line'>    &lt;script&gt;                                                                  
-</span><span class='line'>        var gitalk  = new Gitalk ({                                           
-</span><span class='line'>            id: window.location.pathname,   // Ensure uniqueness and length less than 50
-</span><span class='line'>            clientID: '{ {site.comment_gitalk_clientId} }',                   
-</span><span class='line'>            clientSecret: '{ {site.comment_gitalk_clientSecret} }',           
-</span><span class='line'>            repo: '{ {site.comment_gitalk_repo} }',                           
-</span><span class='line'>            owner: '{ {site.github_username} }',                              
-</span><span class='line'>            admin: ['{ {site.github_username} }'],                            
-</span><span class='line'>                distractionFreeMode: false  // Facebook-like distraction free mode
-</span><span class='line'>        })                                                                    
-</span><span class='line'>        gitalk.render('gitalk-container')                                     
-</span><span class='line'>    &lt;/script&gt;                                                                 
-</span><span class='line'>    &lt;!-- Gitalk end --&gt;                                                       
-</span><span class='line'>  &lt;/section&gt;                                                                  
-</span><span class='line'> </span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>bundle install
+</span><span class='line'>rake install
+</span><span class='line'> ```
+</span><span class='line'>      - 使用
+</span><span class='line'>      </span></code></pre></td></tr></table></div></figure>
 
 
-<p>其中，<code>comment_gitalk_clientId</code>和<code>comment_gitalk_clientSecret</code>为第一步中申请的两串密钥。</p>
+<p>rake setup_github_pages
+rake generate
+rake preview // 本地预览，<a href="http://localhost:4000">http://localhost:4000</a>
+rake deploy  // 发布静态网页内容到github主分支
+rake new_post[&ldquo;title&rdquo;] // 添加新的博客
+rake new_page[&ldquo;title&rdquo;] // 添加新的页面，例如tab</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake ***解决。
+</span><span class='line'>   - 目录结构
+</span><span class='line'>  - source目录为相关模版文件；
+</span><span class='line'>  - _deploy目录为根据source目录中相关模块，生成静态文件；
+</span><span class='line'>  - public目录为最终推送到github的文件列表，从_deploy拷贝而来。
+</span><span class='line'>   - 源代码提交
+</span><span class='line'>   </span></code></pre></td></tr></table></div></figure>
+
+
+<p>git add .
+git commit -m &ldquo;your message&rdquo;
+git push origin source</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>   上述命令将博客开发源代码提交到github source分支。
+</span><span class='line'>   
+</span><span class='line'>## 访问统计模块   
+</span><span class='line'>clustrmap可以统计网页访问量，并能够在地图显示访问者地理位置分布，访问趋势等。&lt;br&gt;
+</span><span class='line'>添加此模块到side需要：
+</span><span class='line'>
+</span><span class='line'>- 在source/_includes/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。
+</span></code></pre></td></tr></table></div></figure>
+
+
+<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=***"></script>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- 在_confi  .yml中修改关于asides的设置。
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, asides/clustrmaps.html]</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  
+</span><span class='line'>## 评论模块
+</span><span class='line'>博客主流评论模块，包括，“Disqus”， “多说”等，但是前者是美国的评论系统，国内受限制，无法访问；后者，在国内曾经十分流行，但是目前网站已经停止提供服务。
+</span><span class='line'>
+</span><span class='line'>因此，经过多方对比，在保证可用性的前提下，最终选择了gitalk评论系统。使用该系统，需要进行如下操作：
+</span><span class='line'>
+</span><span class='line'>- 在github申请`Client ID`和`Client Secret`两串密钥，并在_config.yml添加对应字段。
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>comment_gitalk_clientId: <strong><strong><strong>                                            <br/>
+comment_gitalk_clientSecret: </strong></strong></strong>                                        <br/>
+comment_gitalk_repo: <strong><em>.github.io                                         <br/>
+github_username: </em></strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>- 在source/_layout/post.html中通过以下代码调用gitalk。
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  <section>                                                                 <br/>
+    <h1>Comments</h1>                                                       <br/>
+    <!-- Gitalk start -->                                                   <br/>
+    <div id="gitalk-container"></div>                                       <br/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script>                                                                <br/>
+        var gitalk  = new Gitalk ({                                         <br/>
+            id: window.location.pathname,   // Ensure uniqueness and length less than 50
+            clientID: &lsquo;{ {site.comment_gitalk_clientId} }&rsquo;,                 <br/>
+            clientSecret: &lsquo;{ {site.comment_gitalk_clientSecret} }&rsquo;,         <br/>
+            repo: &lsquo;{ {site.comment_gitalk_repo} }&rsquo;,                         <br/>
+            owner: &lsquo;{ {site.github_username} }&rsquo;,                            <br/>
+            admin: [&lsquo;{ {site.github_username} }&rsquo;],                          <br/>
+                distractionFreeMode: false  // Facebook-like distraction free mode
+        })                                                                  <br/>
+        gitalk.render(&lsquo;gitalk-container&rsquo;)                                   <br/>
+    </script>                                                               <br/>
+    <!-- Gitalk end -->                                                     <br/>
+  </section></p>
+
+<p><code>``
+其中，</code>comment_gitalk_clientId<code>和</code>comment_gitalk_clientSecret`为第一步中申请的两串密钥。</p>
 
 <h1>参考文章</h1>
 
