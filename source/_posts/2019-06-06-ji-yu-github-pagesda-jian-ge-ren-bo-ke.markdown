@@ -45,6 +45,7 @@ categories:
       ```
       rake setup_github_pages 
       ```
+
       此命令将进行一系列初始化操作：
       
          - 询问github pages的仓库url。
