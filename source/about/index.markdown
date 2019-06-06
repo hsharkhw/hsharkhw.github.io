@@ -6,13 +6,6 @@ comments: true
 sharing: true
 footer: true
 ---
----
-layout: page
-title: "about me"
-date: 2019-06-05 15:23
-comments: true 
----
-
 
 I am a Ph.D. candidate in the [Department of Computer Science and Technology](http://www.cs.tsinghua.edu.cn/) at [Tsinghua University](http://www.tsinghua.edu.cn/), advised by [Prof. Lifeng Sun](http://media.cs.tsinghua.edu.cn/en/sunlf) and [Prof. Zhi Wang](http://media.cs.tsinghua.edu.cn/~wangzhi/). Prior to joining [Lab of Multimedia and Networking](http://media.cs.tsinghua.edu.cn/~multimedia/], I received my B.E. degree from [School of Computer Science and Technology](http://cs.xidian.edu.cn) at [Xidian University](http://www.xidian.edu.cn) in 2012. My research work focuses on the multimedia network optimization, including server selection, overlay path construction and edge-assisted content delivery. For more details, please refer to my CV [[English version]](./doc/Hu_Wen_Tsinghua_CV.pdf) [[Chinese version]](./doc/胡文_清华大学_个人简历.pdf).
 
