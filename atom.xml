@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-06-09T20:28:15+08:00</updated>
+  <updated>2019-06-09T20:43:07+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -90,13 +90,13 @@
 <li>安装ruby
 
 <ul>
-<li>安装ruby容易出现问题
-<code>
-brew install ruby
+<li><p>安装ruby容易出现问题</p>
+
+<pre><code>brew install ruby
 gem install bundler
 bundle install
 gem env home // 确保gem目录在用户目录而不是系统目录
-</code></li>
+</code></pre></li>
 </ul>
 </li>
 <li>git软件
@@ -129,14 +129,16 @@ gem env home // 确保gem目录在用户目录而不是系统目录
 <li><p>安装与使用</p>
 
 <ul>
-<li><p>安装</p></li>
-<li><pre><code>git clone git://github.com/imathis/octopress.git octopress
+<li><p>安装</p>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress
 cd octopress
 bundle install
 rake install
 </code></pre></li>
-<li><p>使用</p></li>
-<li><pre><code>rake setup_github_pages
+<li><p>使用</p>
+
+<pre><code>rake setup_github_pages
 </code></pre>
 
 <p>此命令将进行一系列初始化操作:</p>
@@ -149,8 +151,9 @@ rake install
 <li>根据你的库url配置你的博客url。</li>
 <li>在_deploy文件夹设置一个master分支用于部署。</li>
 </ul>
-</li>
-<li><pre><code>rake generate
+
+
+<pre><code>rake generate
 rake preview // 本地预览，http://localhost:4000
 rake deploy  // 发布静态网页内容到github主分支
 rake new_post["title"] // 添加新的博客
