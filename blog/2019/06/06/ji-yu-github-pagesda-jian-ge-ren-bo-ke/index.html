@@ -213,25 +213,21 @@ rake setup_github_pages
 添加此模块到side需要：</p>
 
 <ul>
-<li><p>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</p>
-
-<p>```</p></li>
+<li>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</li>
 </ul>
 
 
-<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=***"></script>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=***"&gt;&lt;/script&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>在_config.yml中修改关于asides的设置。</li>
+</ul>
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>- 在_config.yml中修改关于asides的设置。
-</span><span class='line'>
-</span><span class='line'>  ```
-</span><span class='line'>default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/clustrmaps.html]</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/clustrmaps.html]</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>评论模块</h2>
