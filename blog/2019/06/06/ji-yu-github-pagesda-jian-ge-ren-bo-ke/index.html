@@ -148,15 +148,17 @@ rake install
 <pre><code>rake setup_github_pages 
 </code></pre>
 
-<pre><code>此命令将进行一系列初始化操作：
+<p>  此命令将进行一系列初始化操作：</p>
 
-- 询问github pages的仓库url。
-- 将imathis/octopress远程点的名称’origin’修改为’octopress’。
-- 加入你的github pages库作为默认的'origin'远程点。
-- 切换活动分支从主分支到源分支。
-- 根据你的库url配置你的博客url。
-- 在_deploy文件夹设置一个master分支用于部署。
-</code></pre>
+<ul>
+<li>询问github pages的仓库url。</li>
+<li>将imathis/octopress远程点的名称’origin’修改为’octopress’。</li>
+<li>加入你的github pages库作为默认的'origin'远程点。</li>
+<li>切换活动分支从主分支到源分支。</li>
+<li>根据你的库url配置你的博客url。</li>
+<li>在_deploy文件夹设置一个master分支用于部署。</li>
+</ul>
+
 
 <pre><code class="``">rake generate
 rake preview // 本地预览，http://localhost:4000
@@ -165,8 +167,7 @@ rake new_post["title"] // 添加新的博客
 rake new_page["title"] // 添加新的页面，例如tab
 </code></pre>
 
-<pre><code>如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake ***解决。
-</code></pre></li>
+<p>  如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake ***解决。</p></li>
 </ul>
 </li>
 <li>目录结构
