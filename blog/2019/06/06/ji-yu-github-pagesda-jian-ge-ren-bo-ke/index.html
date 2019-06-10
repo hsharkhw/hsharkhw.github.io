@@ -9,7 +9,7 @@
   <meta name="author" content="hshark">
 
   
-  <meta name="description" content="博客作为一种技术总结以及交流的载体，已经成为大多数码农提升自我，帮助他人的必备平台之一。基于搭建便捷性角度出发，采用github + octopress搭建个人博客，记录相关流程。 环境配置 安装ruby 安装ruby容易出现问题 brew install ruby
+  <meta name="description" content="博客作为一种技术总结以及交流的载体，已经成为大多数码农提升自我，帮助他人的必备平台之一。基于搭建便捷性角度出发，采用github + octopress搭建个人博客，记录相关流程。 环境配置 安装ruby 安装ruby容易出现各种问题 brew install ruby
 gem install &hellip;">
   
 
@@ -94,137 +94,126 @@ gem install &hellip;">
 <h2>环境配置</h2>
 
 <ul>
-<li>安装ruby
+<li><p>安装ruby</p>
 
-<ul>
-<li><p>安装ruby容易出现问题</p>
+<p>安装ruby容易出现各种问题</p>
 
 <pre><code>brew install ruby
 gem install bundler
 bundle install
-gem env home // 确保gem目录在用户目录而不是系统目录
-</code></pre></li>
-</ul>
-</li>
-<li>git软件
-
-<ul>
-<li>配置ssh-key
-
-<ul>
-<li>将本地公钥添加到github，具体位置为：个人头像->setting->ssh and gpg keys。</li>
-</ul>
-</li>
-<li>创建git-pages
-
-<ul>
-<li>注意新建的git-pages，必须为username.github.io。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>markdown软件
-
-<ul>
-<li>mac下推荐使用macdown软件，开源免费。</li>
-</ul>
-</li>
-<li>octopress软件
-
-<ul>
-<li><p>该软件可以认为是对Jekyll的二次封装，进一步方便我们撰写博客，这也是我使用此软件的原因。</p></li>
-<li><p>安装与使用</p>
-
-<ul>
-<li><p>安装</p>
-
-<pre><code>git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-bundle install
-rake install
-</code></pre></li>
-<li><p>使用</p>
-
-<pre><code>rake setup_github_pages
+gem env home  // 确保gem目录在用户目录而不是系统目录
 </code></pre>
 
-<p>此命令将进行一系列初始化操作:</p>
-
 <ul>
-<li>询问GitHub pages的仓库url。</li>
-<li>将imathis/octopress远程点的‘origin'修改为‘octopress'。</li>
-<li>加入github pages库作为默认的‘origin'远程点。</li>
-<li>根据你的库url配置你的博客url。</li>
-<li>根据你的库url配置你的博客url。</li>
-<li>在_deploy文件夹设置一个master分支用于部署。</li>
-</ul>
+<li><p>git软件</p>
 
+<pre><code>- 配置ssh-key
+      - 将本地公钥添加到github，具体位置为：个人头像-&gt;setting-&gt;ssh and gpg keys。 
+- 创建git-pages
+      - 注意新建的git-pages，必须为username.github.io。 
+</code></pre></li>
+<li><p>markdown软件</p>
 
-<pre><code>rake generate
-rake preview // 本地预览，http://localhost:4000
-rake deploy  // 发布静态网页内容到github主分支
-rake new_post["title"] // 添加新的博客
-rake new_page["title"] // 添加新的页面，例如tab
+<pre><code>- mac下推荐使用macdown或者typora软件。
+</code></pre></li>
+<li><p>octopress软件</p>
+
+<pre><code>- 该件可以认为是对Jekyll的二次封装，进一步方便我们撰写博客，这也是我使用此软件的原因。 
+
+- 安装与使用
+
+      - 安装
+
+        ```
+        git clone git://github.com/imathis/octopress.git octopress
+        cd octopress
+        bundle install
+        rake install
+        ```
+
+      - 使用
+
+        ```
+        rake setup_github_pages
+        ```
+
+        此命令将进行一系列初始化操作：
+
+          - 询问GitHub pages的仓库url。 
+
+          - 将imathis/octopress远程点的‘origin'修改为‘octopress'。 
+
+          - 加入github pages库作为默认的‘origin'远程点。 
+
+          - 根据你的库url配置你的博客url。 
+
+          - 在_deploy文件夹设置一个master分支用于部署。 
+
+            ```
+            rake generate
+            rake preview // 本地预览，http://localhost:4000
+            rake deploy  // 发布静态网页内容到github主分支
+            rake new_post["title"] // 添加新的博客
+            rake new_page["title"] // 添加新的页面，例如tab
+            ```
+
+        如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake ***解决。    
+
+- 目录结构
+
+    - source目录为相关模版文件；
+    - _deploy目录为根据source目录中相关模块，生成静态文件；
+    - public目录为最终推送到github的文件列表，从_deploy拷贝而来。
 </code></pre>
 
-<p>如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake ***解决。</p></li>
-</ul>
-</li>
-<li><p>目录结构</p>
-
 <ul>
-<li>source目录为相关模版文件；</li>
-<li>_deploy目录为根据source目录中相关模块，生成静态文件；</li>
-<li>public目录为最终推送到github的文件列表，从_deploy拷贝而来。</li>
-</ul>
-</li>
 <li><p>源代码提交</p>
 
-<pre><code>git add .
-git commit -m "your message"
-git push origin source
+<pre><code class="```">   git add .
+   git commit -m "your message"
+   git push origin source
 </code></pre>
 
-<p>  上述命令将博客开发源代码提交到github pages仓库source分支。</p></li>
-<li><p>新机器上pull代码</p></li>
+<p>上述命令将博客开发源代码提交到github pages仓库source分支。</p></li>
+<li><p>新机器上pull代码</p>
+
+<pre><code>git clone -b source (url) octopress // 克隆source分支到本地octopress目录，存放着博客源码
+cd octopress
+git clone (url) _deploy // 克隆master分支到_deploy目录，存放着博客网页内容
+gem install bundler
+bundle install
+rake install
+rake setup_github_pages
+</code></pre>
+
+<p>其中url为博客仓库url。</p></li>
 </ul>
-
-
-<pre><code class="``">  git clone -b source (url) octopress // 克隆source分支到本地octopress目录，存放着博客源码
-  cd octopress
-  git clone (url) _deploy // 克隆master分支到_deploy目录，存放着博客网页内容
-  gem install bundler
-  bundle install
-  rake install
-  rake setup_github_pages
-</code></pre>
-
-<pre><code> 其中url为博客仓库url。
-</code></pre></li>
+</li>
+</ul>
+</li>
 </ul>
 
 
 <h2>访问统计模块</h2>
 
-<p>clustrmap可以统计网页访问量，并能够在地图显示访问者地理位置分布，访问趋势等。
-添加此模块到side需要：</p>
+<p>clustrmap可以统计网页访问量，并能够在地图显示访问者地理位置分布，访问趋势等。</p>
+
+<p>添加此模块到side需要进行以下配置：</p>
 
 <ul>
-<li>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</li>
-</ul>
+<li><p>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</p>
 
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=***"&gt;&lt;/script&gt;</span></code></pre></td></tr></table></div></figure>
-
+<pre><code>&lt;script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=***"&gt;&lt;/script&gt;
+</code></pre>
 
 <ul>
-<li>在_config.yml中修改关于asides的设置。</li>
+<li><p>在_config.yml中修改关于asides的设置。</p>
+
+<pre><code>default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/clustrmaps.html]
+</code></pre></li>
 </ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/clustrmaps.html]</span></code></pre></td></tr></table></div></figure>
+</li>
+</ul>
 
 
 <h2>评论模块</h2>
@@ -233,79 +222,66 @@ git push origin source
 
 <p>因此，经过多方对比，在保证可用性的前提下，最终选择了commenthub评论系统。使用该系统，需要进行如下操作：</p>
 
-<ul>
-<li>在<a href="https://commenthub.herokuapp.com">commenthub官网</a>申请ID, 并填写博客地址进行绑定。</li>
-<li>在_config.yml配置<code>commenthub_id</code>。</li>
-<li>在_layouts/post.html中添加一下代码，显示评论模块。</li>
-</ul>
+<pre><code>- 在[commenthub官网](https://commenthub.herokuapp.com)申请ID, 并填写博客地址进行绑定。 
+
+- 在_config.yml配置`commenthub_id`。 
+
+- 在_layouts/post.html中添加一下代码，显示评论模块。 
+
+  ```js
+
+    &lt;section&gt;
+      &lt;h1&gt;评论&lt;/h1&gt;
+      &lt;div id="commenthub_thread" aria-live="polite"&gt;&lt;/div&gt;
+    &lt;/section&gt;
+
+  ```
+
+- 创建commenthub.html文件 
+
+  ```js
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">site</span><span class="p">.</span><span class="nx">commenthub_id</span> <span class="nx">and</span> <span class="nx">page</span><span class="p">.</span><span class="nx">comments</span> <span class="o">==</span> <span class="kc">true</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nx">section</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">评论</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;commenthub_thread&quot;</span> <span class="nx">aria</span><span class="o">-</span><span class="nx">live</span><span class="o">=</span><span class="s2">&quot;polite&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="err">/section&gt;</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+  &lt;script type="text/javascript"&gt;
+      var commenthub_id = '5024203';
+      var commenthub_website = 'http://hsharkhw.github.io';
+      var commenthub_identifier = '/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+      var commenthub_url = 'http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+      var commenthub_title = '基于github pages搭建个人博客';
+      (function () {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = 'https://commenthub.herokuapp.com/js/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+  &lt;/script&gt;
+
+  ```
+
+- 在_includes/after_foot.html中引入commenthub.html。 
+
+  ```js
+</code></pre>
+
+<script type="text/javascript">
+    var commenthub_id = '5024203';
+    var commenthub_website = 'http://hsharkhw.github.io';
+    var commenthub_identifier = '/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+    var commenthub_url = 'http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+    var commenthub_title = '基于github pages搭建个人博客';
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = 'https://commenthub.herokuapp.com/js/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
-<ul>
-<li>创建commenthub.html文件</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">comment</span> <span class="o">%</span><span class="p">}</span> <span class="nx">Load</span> <span class="nx">script</span> <span class="k">if</span> <span class="nx">commenthub</span> <span class="nx">comments</span> <span class="nx">are</span> <span class="nx">enabled</span> <span class="nx">and</span> <span class="err">`</span><span class="nx">page</span><span class="p">.</span><span class="nx">comments</span><span class="err">`</span> <span class="nx">is</span> <span class="nx">either</span> <span class="nx">empty</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="nx">or</span> <span class="nx">set</span> <span class="nx">to</span> <span class="kc">true</span> <span class="p">{</span><span class="o">%</span> <span class="nx">endcomment</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">site</span><span class="p">.</span><span class="nx">commenthub_id</span> <span class="nx">and</span> <span class="nx">page</span><span class="p">.</span><span class="nx">comments</span> <span class="o">!=</span> <span class="kc">false</span> <span class="o">%</span><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">commenthub_id</span> <span class="o">=</span> <span class="s1">&#39;5024203&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">commenthub_website</span> <span class="o">=</span> <span class="s1">&#39;http://hsharkhw.github.io&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">commenthub_identifier</span> <span class="o">=</span> <span class="s1">&#39;/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">commenthub_url</span> <span class="o">=</span> <span class="s1">&#39;http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">commenthub_title</span> <span class="o">=</span> <span class="s1">&#39;基于github pages搭建个人博客&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">dsq</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">dsq</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span>
-</span><span class='line'>        <span class="nx">dsq</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>        <span class="nx">dsq</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://commenthub.herokuapp.com/js/embed.js&#39;</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">dsq</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}());</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
-</span><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>在_includes/after_foot.html中引入commenthub.html。</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">{</span><span class="o">%</span> <span class="nx">include</span> <span class="nx">commenthub</span><span class="p">.</span><span class="nx">html</span> <span class="o">%</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p>s
+      ```</p>
 
 <h1>参考文章</h1>
 
