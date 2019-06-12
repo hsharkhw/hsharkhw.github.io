@@ -9,7 +9,10 @@
   <meta name="author" content="hshark">
 
   
-  <meta name="description" content="背景 针对大量小内存分配场景下（例如，企业通讯录，每个用户信息对应一个json node），系统调用malloc/calloc等重复向系统申请内存资源，导致系统性能低下。 解决方案 核心思想 每次向系统申请固定大小的内存资源，每次用户申请小内存资源时，直接从应用进程已申请的内存资源中获取。 &hellip;">
+  <meta name="description" content="背景
+针对大量小内存分配场景下（例如，企业通讯录，每个用户信息对应一个json node），系统调用malloc/calloc等重复向系统申请内存资源，导致系统性能低下。 解决方案
+## 核心思想
+每次向系统申请固定大小的内存资源，每次用户申请小内存资源时，直接从应用进程已申请的内存资源中获取。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,59 +88,42 @@
   </header>
 
 
-<div class="entry-content"><h1>背景</h1>
-
+<div class="entry-content"><h1 id="section">背景</h1>
 <p>针对大量小内存分配场景下（例如，企业通讯录，每个用户信息对应一个json node），系统调用malloc/calloc等重复向系统申请内存资源，导致系统性能低下。</p>
 
 <!--more-->
 
+<h1 id="section-1">解决方案</h1>
+<p>## 核心思想
+每次向系统申请固定大小的内存资源，每次用户申请小内存资源时，直接从应用进程已申请的内存资源中获取。</p>
 
-<h1>解决方案</h1>
-
-<h2>核心思想</h2>
-
-<p>每次向系统申请固定大小的内存资源，每次用户申请小内存资源时，直接从应用进程已申请的内存资源中获取。</p>
-
-<h2>数据结构</h2>
-
+<h2 id="section-2">数据结构</h2>
 <p><code>hello world;</code></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sturct ptr {
-</span><span class='line'>    int a;
-</span><span class='line'>    int b;
-</span><span class='line'>    int c;
-</span><span class='line'>    char ptr[0];
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sturct ptr {
+</span><span class="line">    int a;
+</span><span class="line">    int b;
+</span><span class="line">    int c;
+</span><span class="line">    char ptr[0];
+</span><span class="line">}</span></code></pre></td></tr></table></div></figure>
+<p>## 知识点
+- 在结构体内引入指针，实现对特定地址便宜的标记。
+- 由于内存对齐，每个结构体成员变量的大小以及顺序尤其需要关注。
+- c语言malloc分配的内存地址不能直接赋值给一个c++对象，即malloc与new存在差异性。new操作内部包含以下三个过程：
+   - 向系统申请内存空间（类似malloc操作，该内存空间可以称之为裸内存）。
+   - 将内存空间与对象函数指针列表绑定。
+   - 调用对象构造函数，完成对象初始化。</p>
 
-
-<h2>知识点</h2>
-
+<h2 id="section-3">参考文章</h2>
 <ul>
-<li>在结构体内引入指针，实现对特定地址便宜的标记。</li>
-<li>由于内存对齐，每个结构体成员变量的大小以及顺序尤其需要关注。</li>
-<li>c语言malloc分配的内存地址不能直接赋值给一个c++对象，即malloc与new存在差异性。new操作内部包含以下三个过程：
-
-<ul>
-<li>向系统申请内存空间（类似malloc操作，该内存空间可以称之为裸内存）。</li>
-<li>将内存空间与对象函数指针列表绑定。</li>
-<li>调用对象构造函数，完成对象初始化。</li>
+  <li><a href="https://github.com/acl-dev/acl/">ACL: https://github.com/acl-dev/acl/</a></li>
 </ul>
-</li>
-</ul>
-
-
-<h2>参考文章</h2>
-
-<ul>
-<li><a href="https://github.com/acl-dev/acl/">ACL: https://github.com/acl-dev/acl/</a></li>
-</ul>
-
 </div>
 
 
