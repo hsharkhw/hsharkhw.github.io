@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-06-12T17:35:29+08:00</updated>
+  <updated>2019-06-13T18:25:50+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -226,26 +226,27 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
   <li>
     <p>在_layouts/post.html中添加一下代码，显示评论模块。</p>
 
-    <p>```</p>
-
+    <p>```
+{% if site.commenthub_id and page.comments == true %}</p>
     <section>
       <h1>评论</h1>
       <div id="commenthub_thread" aria-live="polite"></div>
   </section>
-
-    <p>```</p>
+    <p>{% endif %}
+```</p>
   </li>
   <li>
     <p>创建commenthub.html文件</p>
 
-    <p>```</p>
-
-    <script type="text/javascript">
-    var commenthub_id = '5024203';
-    var commenthub_website = 'http://hsharkhw.github.io';
-    var commenthub_identifier = '/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
-    var commenthub_url = 'http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
-    var commenthub_title = '基于github pages搭建个人博客';
+    <p><code>
+{% comment %} Load script if commenthub comments are enabled and 'page.comments' is either empty (index) or set to true {% endcomment %}
+{% if site.commenthub_id and page.comments != false %}
+&lt;script type="text/javascript"&gt;
+    var commenthub_id = '{{ site.commenthub_id }}';
+    var commenthub_website = '{{ site.url }}';
+    var commenthub_identifier = '{{ page.url }}';
+    var commenthub_url = '{{ site.url }}{{ page.url }}';
+    var commenthub_title = '{{ page.title }}';
     (function () {
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
@@ -253,43 +254,18 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
         dsq.src = 'https://commenthub.herokuapp.com/js/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
-</script>
-
-    <p>```</p>
+&lt;/script&gt;
+{% endif %}
+</code></p>
   </li>
   <li>
     <p>在_includes/after_foot.html中引入commenthub.html。</p>
+
+    <p><code>
+  {% include commenthub.html %} 
+ </code></p>
   </li>
 </ul>
-
-<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">&lt;script type="text/javascript"&gt;
-</span><span class="line">    var commenthub_id = '5024203';
-</span><span class="line">    var commenthub_website = 'http://hsharkhw.github.io';
-</span><span class="line">    var commenthub_identifier = '/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
-</span><span class="line">    var commenthub_url = 'http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
-</span><span class="line">    var commenthub_title = '基于github pages搭建个人博客';
-</span><span class="line">    (function () {
-</span><span class="line">        var dsq = document.createElement('script');
-</span><span class="line">        dsq.type = 'text/javascript';
-</span><span class="line">        dsq.async = true;
-</span><span class="line">        dsq.src = 'https://commenthub.herokuapp.com/js/embed.js';
-</span><span class="line">        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-</span><span class="line">    }());
-</span><span class="line">&lt;/script&gt;</span></code></pre></td></tr></table></div></figure>
 
 <h1 id="section-3">参考文章</h1>
 <ul>
