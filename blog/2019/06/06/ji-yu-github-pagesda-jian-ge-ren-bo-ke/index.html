@@ -262,15 +262,18 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
   <li>
     <p>创建commenthub.html文件</p>
 
-    <p><code>js
+    <p><code>
 {% comment %} Load script if commenthub comments are enabled and 'page.comments' is either empty (index) or set to true {% endcomment %}
 {% if site.commenthub_id and page.comments != false %}
+</code></p>
+
+    <p><code>js
 &lt;script type="text/javascript"&gt;
-    var commenthub_id = '{{ site.commenthub_id }}';
-    var commenthub_website = '{{ site.url }}';
-    var commenthub_identifier = '{{ page.url }}';
-    var commenthub_url = '{{ site.url }}{{ page.url }}';
-    var commenthub_title = '{{ page.title }}';
+    var commenthub_id = '5024203';
+    var commenthub_website = 'http://hsharkhw.github.io';
+    var commenthub_identifier = '/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+    var commenthub_url = 'http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/';
+    var commenthub_title = '基于github pages搭建个人博客';
     (function () {
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
@@ -279,6 +282,9 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 &lt;/script&gt;
+</code></p>
+
+    <p><code>
 {% endif %}
 </code></p>
   </li>
