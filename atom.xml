@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-07-19T17:25:03+08:00</updated>
+  <updated>2019-07-19T17:29:36+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -228,9 +228,9 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 
     <section>
 
-​      <h1>评论</h1>
+      <h1>评论</h1>
 
-​      <div id="commenthub_thread" aria-live="polite"></div>
+      <div id="commenthub_thread" aria-live="polite"></div>
 
   </section>
 
@@ -244,7 +244,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
   <li>
     <p>创建commenthub.html文件</p>
 
-    <p><code>
+    <p><code>js
 {% comment %} Load script if commenthub comments are enabled and 'page.comments' is either empty (index) or set to true {% endcomment %}
 {% if site.commenthub_id and page.comments != false %}
 &lt;script type="text/javascript"&gt;
