@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-07-19T18:33:17+08:00</updated>
+  <updated>2019-07-19T18:35:53+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -213,10 +213,9 @@ rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
 <span class="o">&lt;</span><span class="err">/script&gt;</span>
 <span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
 </code></pre></div></li>
-<li><p>在<em>includes/after</em>foot.html中引入commenthub.html。
-  <code>
-  {% include commenthub.html %} 
-</code></p></li>
+<li><p>在<em>includes/after</em>foot.html中引入commenthub.html。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">  {% include commenthub.html %} 
+</code></pre></div></li>
 </ul>
 
 <h1>参考文章</h1>
