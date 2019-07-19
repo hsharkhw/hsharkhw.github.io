@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-07-19T17:38:14+08:00</updated>
+  <updated>2019-07-19T18:24:10+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -166,7 +166,7 @@ rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
 <ul>
 <li>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  &lt;script type=&quot;text/javascript&quot; id=&quot;clustrmaps&quot; src=&quot;//cdn.clustrmaps.com/map_v2.js?u=***&quot;&gt;&lt;/script&gt;
+<div class="highlight"><pre><code class="language-js" data-lang="js">  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;clustrmaps&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;//cdn.clustrmaps.com/map_v2.js?u=***&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
 </code></pre></div>
 <ul>
 <li>在_config.yml中修改关于asides的设置。 </li>
@@ -183,14 +183,13 @@ rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
 <li><p>在<a href="https://commenthub.herokuapp.com">commenthub官网</a>申请ID, 并填写博客地址进行绑定。</p></li>
 <li><p>在<em>config.yml配置`commenthub</em>id`。</p></li>
 <li><p>在_layouts/post.html中添加一下代码，显示评论模块。</p>
-
-<p><section></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  &lt;h1&gt;评论&lt;/h1&gt;
-
-  &lt;div id=&quot;commenthub_thread&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
-</code></pre></div>
-<p></section></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">  <span class="nt">&lt;section&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">{% if site.commenthub_id and page.comments == true %}
+  <span class="nt">&lt;section&gt;</span>
+      <span class="nt">&lt;h1&gt;</span>评论<span class="nt">&lt;/h1&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;commenthub_thread&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+{% endif %}
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html">  <span class="nt">&lt;section&gt;</span>
       <span class="nt">&lt;h1&gt;</span>评论<span class="nt">&lt;/h1&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;commenthub_thread&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;/section&gt;</span>
