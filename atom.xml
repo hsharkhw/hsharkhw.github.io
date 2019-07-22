@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-07-22T11:22:09+08:00</updated>
+  <updated>2019-07-22T15:23:36+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -94,10 +94,16 @@
 <li><p>git软件</p>
 
 <ul>
-<li>配置ssh-key</li>
+<li>配置ssh-key
+
+<ul>
 <li>将本地公钥添加到github，具体位置为：个人头像-&gt;setting-&gt;ssh and gpg keys。</li>
-<li>创建git-pages</li>
+</ul></li>
+<li>创建git-pages
+
+<ul>
 <li>注意新建的git-pages，必须为username.github.io。</li>
+</ul></li>
 </ul></li>
 <li><p>markdown软件</p>
 
@@ -108,8 +114,7 @@
 
 <ul>
 <li>该件可以认为是对Jekyll的二次封装，进一步方便我们撰写博客，这也是我使用此软件的原因。</li>
-<li>安装与使用</li>
-</ul>
+<li><p>安装与使用</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">git clone git://github.com/imathis/octopress.git octopress
 cd octopress
 bundle install
@@ -125,33 +130,44 @@ rake install
 <li>根据你的库url配置你的博客url。</li>
 <li>在_deploy文件夹设置一个master分支用于部署。</li>
 </ul>
+
+<!-- -->
 <div class="highlight"><pre><code class="language-text" data-lang="text">rake generate
 rake preview // 本地预览，http://localhost:4000
 rake deploy  // 发布静态网页内容到github主分支
 rake new_post[&quot;title&quot;] // 添加新的博客
 rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
 </code></pre></div>
-<p>如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake xxx解决。
-  - 目录结构
-    - source目录为相关模版文件。
-    - <em>deploy目录为根据source目录中相关模块，生成静态文件。
-    - public目录为最终推送到github的文件列表，从</em>deploy拷贝而来。
-  - 源代码提交</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  git add .
-  git commit -m &quot;your message&quot;
-  git push origin source
+<p>如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake xxx解决。</p>
+
+<!-- -->
+
+<ul>
+<li>目录结构
+
+<ul>
+<li>source目录为相关模版文件。</li>
+<li>_deploy目录为根据source目录中相关模块，生成静态文件。</li>
+<li>public目录为最终推送到github的文件列表，从_deploy拷贝而来。</li>
+</ul></li>
+<li><p>源代码提交</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git add .
+git commit -m &quot;your message&quot;
+git push origin source
 </code></pre></div>
-<p>上述命令将博客开发源代码提交到github pages仓库source分支。 
-  - 新机器上pull代码</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  git clone -b source (url) octopress // 克隆source分支到本地octopress目录，存放着博客源码
-  cd octopress
-  git clone (url) _deploy // 克隆master分支到_deploy目录，存放着博客网页内容
-  gem install bundler
-  bundle install
-  rake install
-  rake setup_github_pages
+<p>上述命令将博客开发源代码提交到github pages仓库source分支。 </p></li>
+<li><p>新机器上pull代码</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git clone -b source (url) octopress // 克隆source分支到本地octopress目录，存放着博客源码
+cd octopress
+git clone (url) _deploy // 克隆master分支到_deploy目录，存放着博客网页内容
+gem install bundler
+bundle install
+rake install
+rake setup_github_pages
 </code></pre></div>
 <p>其中url为博客仓库url。 </p></li>
+</ul></li>
+</ul></li>
 </ul>
 
 <h2>访问统计模块</h2>
@@ -161,15 +177,16 @@ rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
 <p>添加此模块到side需要进行以下配置：</p>
 
 <ul>
-<li>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</li>
+<li><p>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</p>
+
+<!-- language: lang-js -->
+<div class="highlight"><pre><code class="language-text" data-lang="text">  &lt;script type=&quot;text/javascript&quot; id=&quot;clustrmaps&quot; src=&quot;//cdn.clustrmaps.com/map_v2.js?u=***&quot;&gt;&lt;/script&gt;
+</code></pre></div></li>
+<li><p>在_config.yml中修改关于asides的设置。 </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/clustrmaps.html]
+</code></pre></div></li>
 </ul>
-<div class="highlight"><pre><code class="language-js" data-lang="js">  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;clustrmaps&quot;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;//cdn.clustrmaps.com/map_v2.js?u=***&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
-</code></pre></div>
-<ul>
-<li>在_config.yml中修改关于asides的设置。 </li>
-</ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/clustrmaps.html]
-</code></pre></div>
+
 <h2>评论模块</h2>
 
 <p>博客主流评论模块，包括，“Disqus”， “多说”等，但是前者是美国的评论系统，国内受限制，无法访问；后者，在国内曾经十分流行，但是目前网站已经停止提供服务。 </p>
@@ -180,39 +197,43 @@ rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
 <li><p>在<a href="https://commenthub.herokuapp.com">commenthub官网</a>申请ID, 并填写博客地址进行绑定。</p></li>
 <li><p>在<em>config.yml配置`commenthub</em>id`。</p></li>
 <li><p>在_layouts/post.html中添加一下代码，显示评论模块。</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">{% if site.commenthub_id and page.comments == true %}
-  <span class="nt">&lt;section&gt;</span>
-      <span class="nt">&lt;h1&gt;</span>评论<span class="nt">&lt;/h1&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;commenthub_thread&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;/section&gt;</span>
-{% endif %}
 
-<span class="nt">&lt;section&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>评论<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;commenthub_thread&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-</code></pre></div></li>
+<!-- language: lang-html -->
+
+<p>{% if site.commenthub<em>id and page.comments == true %}
+     <section>
+         <h1>评论</h1>
+         &lt;div id=&quot;commenthub</em>thread&quot; aria-live=&quot;polite&quot;&gt;</div>
+     </section>
+   {% endif %}</p>
+
+<p><section>
+       <h1>评论</h1>
+       <div id="commenthub_thread" aria-live="polite"></div>
+   </section></p></li>
 <li><p>创建commenthub.html文件</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span><span class="o">%</span> <span class="nx">comment</span> <span class="o">%</span><span class="p">}</span> <span class="nx">Load</span> <span class="nx">script</span> <span class="k">if</span> <span class="nx">commenthub</span> <span class="nx">comments</span> <span class="nx">are</span> <span class="nx">enabled</span> <span class="nx">and</span> <span class="s1">&#39;page.comments&#39;</span> <span class="nx">is</span> <span class="nx">either</span> <span class="nx">empty</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="nx">or</span> <span class="nx">set</span> <span class="nx">to</span> <span class="kc">true</span> <span class="p">{</span><span class="o">%</span> <span class="nx">endcomment</span> <span class="o">%</span><span class="p">}</span>
-<span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">site</span><span class="p">.</span><span class="nx">commenthub_id</span> <span class="nx">and</span> <span class="nx">page</span><span class="p">.</span><span class="nx">comments</span> <span class="o">!=</span> <span class="kc">false</span> <span class="o">%</span><span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
-    <span class="kd">var</span> <span class="nx">commenthub_id</span> <span class="o">=</span> <span class="s1">&#39;5024203&#39;</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">commenthub_website</span> <span class="o">=</span> <span class="s1">&#39;http://hsharkhw.github.io&#39;</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">commenthub_identifier</span> <span class="o">=</span> <span class="s1">&#39;/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/&#39;</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">commenthub_url</span> <span class="o">=</span> <span class="s1">&#39;http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/&#39;</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">commenthub_title</span> <span class="o">=</span> <span class="s1">&#39;基于github pages搭建个人博客&#39;</span><span class="p">;</span>
-    <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">dsq</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-        <span class="nx">dsq</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span>
-        <span class="nx">dsq</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="nx">dsq</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://commenthub.herokuapp.com/js/embed.js&#39;</span><span class="p">;</span>
-        <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">dsq</span><span class="p">);</span>
-    <span class="p">}());</span>
-<span class="o">&lt;</span><span class="err">/script&gt;</span>
-<span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
+
+<!-- language: lang-js -->
+<div class="highlight"><pre><code class="language-text" data-lang="text">{% comment %} Load script if commenthub comments are enabled and &#39;page.comments&#39; is either empty (index) or set to true {% endcomment %}
+{% if site.commenthub_id and page.comments != false %}
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var commenthub_id = &#39;5024203&#39;;
+    var commenthub_website = &#39;http://hsharkhw.github.io&#39;;
+    var commenthub_identifier = &#39;/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/&#39;;
+    var commenthub_url = &#39;http://hsharkhw.github.io/blog/2019/06/06/ji-yu-github-pagesda-jian-ge-ren-bo-ke/&#39;;
+    var commenthub_title = &#39;基于github pages搭建个人博客&#39;;
+    (function () {
+        var dsq = document.createElement(&#39;script&#39;);
+        dsq.type = &#39;text/javascript&#39;;
+        dsq.async = true;
+        dsq.src = &#39;https://commenthub.herokuapp.com/js/embed.js&#39;;
+        (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(dsq);
+    }());
+&lt;/script&gt;
+{% endif %}
 </code></pre></div></li>
 <li><p>在<em>includes/after</em>foot.html中引入commenthub.html。</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  {% include commenthub.html %} 
+<div class="highlight"><pre><code class="language-text" data-lang="text">{% include commenthub.html %} 
 </code></pre></div></li>
 </ul>
 
