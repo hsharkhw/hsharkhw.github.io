@@ -98,26 +98,17 @@
 <p>每次向系统申请固定大小的内存资源，每次用户申请小内存资源时，直接从应用进程已申请的内存资源中获取。</p>
 
 <h2 id="part-2c8e0059fc0b13ae">数据结构</h2>
-
-<p><code class="prettyprint">hello world;</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sturct ptr {
-</span><span class='line'>    int a;
-</span><span class='line'>    int b;
-</span><span class='line'>    int c;
-</span><span class='line'>    char ptr[0];
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">sturct ptr {
+    int a;
+    int b;
+    int c;
+    char ptr[0];
+}
+</code></pre></div>
 <h2 id="part-3786f3a926bd7af">知识点</h2>
 
 <ul>
-<li>在结构体内引入指针，实现对特定地址便宜的标记。</li>
+<li>在结构体内引入指针，实现对特定地址偏移的标记。</li>
 <li>由于内存对齐，每个结构体成员变量的大小以及顺序尤其需要关注。</li>
 <li>c语言malloc分配的内存地址不能直接赋值给一个c++对象，即malloc与new存在差异性。new操作内部包含以下三个过程：
 
