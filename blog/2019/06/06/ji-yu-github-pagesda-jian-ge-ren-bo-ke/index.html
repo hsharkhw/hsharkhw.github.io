@@ -9,7 +9,8 @@
   <meta name="author" content="hshark">
 
   
-  <meta name="description" content="博客作为一种技术总结以及交流的载体，已经成为大多数码农提升自我，帮助他人的必备平台之一。基于搭建便捷性角度出发，采用github + octopress搭建个人博客，记录相关流程。 环境配置 安装ruby 安装ruby容易出现各种问题 brew install ruby gem install &hellip;">
+  <meta name="description" content="博客作为一种技术总结以及交流的载体，已经成为大多数码农提升自我，帮助他人的必备平台之一。基于搭建便捷性角度出发，采用github + octopress搭建个人博客，记录相关流程。 环境配置 安装ruby
+安装ruby容易出现各种问题 brew install ruby gem install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,10 +93,9 @@
 <h2>环境配置</h2>
 
 <ul>
-<li>安装ruby</li>
+<li>安装ruby
+安装ruby容易出现各种问题</li>
 </ul>
-
-<p>安装ruby容易出现各种问题</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  brew install ruby
   gem install bundler
   bundle install
@@ -189,8 +189,6 @@ rake setup_github_pages
 
 <ul>
 <li><p>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</p>
-
-<!-- language: lang-js -->
 <div class="highlight"><pre><code class="language-text" data-lang="text">  &lt;script type=&quot;text/javascript&quot; id=&quot;clustrmaps&quot; src=&quot;//cdn.clustrmaps.com/map_v2.js?u=***&quot;&gt;&lt;/script&gt;
 </code></pre></div></li>
 <li><p>在_config.yml中修改关于asides的设置。 </p>
@@ -205,11 +203,9 @@ rake setup_github_pages
 <p>因此，经过多方对比，在保证可用性的前提下，最终选择了commenthub评论系统。使用该系统，需要进行如下操作： </p>
 
 <ul>
-<li><p>在<a href="https://commenthub.herokuapp.com">commenthub官网</a>申请ID, 并填写博客地址进行绑定。</p></li>
-<li><p>在<em>config.yml配置`commenthub</em>id`。</p></li>
+<li>在<a href="https://commenthub.herokuapp.com">commenthub官网</a>申请ID, 并填写博客地址进行绑定。</li>
+<li>在<em>config.yml配置`commenthub</em>id`。</li>
 <li><p>在_layouts/post.html中添加一下代码，显示评论模块。</p>
-
-<!-- language: lang-html -->
 
 <p>{% if site.commenthub<em>id and page.comments == true %}
      <section>
@@ -223,8 +219,6 @@ rake setup_github_pages
        <div id="commenthub_thread" aria-live="polite"></div>
    </section></p></li>
 <li><p>创建commenthub.html文件</p>
-
-<!-- language: lang-js -->
 <div class="highlight"><pre><code class="language-text" data-lang="text">{% comment %} Load script if commenthub comments are enabled and &#39;page.comments&#39; is either empty (index) or set to true {% endcomment %}
 {% if site.commenthub_id and page.comments != false %}
 &lt;script type=&quot;text/javascript&quot;&gt;
