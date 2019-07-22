@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-07-22T15:37:19+08:00</updated>
+  <updated>2019-07-22T15:45:44+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -81,15 +81,13 @@
 <h2>环境配置</h2>
 
 <ul>
-<li>安装ruby
-安装ruby容易出现各种问题</li>
-</ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  brew install ruby
-  gem install bundler
-  bundle install
-  gem env home  // 确保gem目录在用户目录而不是系统目录
-</code></pre></div>
-<ul>
+<li><p>安装ruby
+安装ruby容易出现各种问题</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">brew install ruby
+gem install bundler
+bundle install
+gem env home  // 确保gem目录在用户目录而不是系统目录
+</code></pre></div></li>
 <li><p>git软件</p>
 
 <ul>
@@ -171,9 +169,8 @@ rake setup_github_pages
 
 <h2>访问统计模块</h2>
 
-<p>clustrmap可以统计网页访问量，并能够在地图显示访问者地理位置分布，访问趋势等。 </p>
-
-<p>添加此模块到side需要进行以下配置：</p>
+<p>clustrmap可以统计网页访问量，并能够在地图显示访问者地理位置分布，访问趋势等。 
+添加此模块到side需要进行以下配置：</p>
 
 <ul>
 <li><p>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</p>
@@ -186,9 +183,8 @@ rake setup_github_pages
 
 <h2>评论模块</h2>
 
-<p>博客主流评论模块，包括，“Disqus”， “多说”等，但是前者是美国的评论系统，国内受限制，无法访问；后者，在国内曾经十分流行，但是目前网站已经停止提供服务。 </p>
-
-<p>因此，经过多方对比，在保证可用性的前提下，最终选择了commenthub评论系统。使用该系统，需要进行如下操作： </p>
+<p>博客主流评论模块，包括，“Disqus”， “多说”等，但是前者是美国的评论系统，国内受限制，无法访问；后者，在国内曾经十分流行，但是目前网站已经停止提供服务。 
+因此，经过多方对比，在保证可用性的前提下，最终选择了commenthub评论系统。使用该系统，需要进行如下操作： </p>
 
 <ul>
 <li>在<a href="https://commenthub.herokuapp.com">commenthub官网</a>申请ID, 并填写博客地址进行绑定。</li>
