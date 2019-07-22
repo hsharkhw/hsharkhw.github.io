@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-07-22T11:03:47+08:00</updated>
+  <updated>2019-07-22T11:22:09+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -132,20 +132,17 @@ rake new_post[&quot;title&quot;] // 添加新的博客
 rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
 </code></pre></div>
 <p>如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake xxx解决。
-- 目录结构</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">- source目录为相关模版文件。
-- _deploy目录为根据source目录中相关模块，生成静态文件。
-- public目录为最终推送到github的文件列表，从_deploy拷贝而来。
-</code></pre></div>
-<ul>
-<li>源代码提交</li>
-</ul>
+  - 目录结构
+    - source目录为相关模版文件。
+    - <em>deploy目录为根据source目录中相关模块，生成静态文件。
+    - public目录为最终推送到github的文件列表，从</em>deploy拷贝而来。
+  - 源代码提交</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  git add .
   git commit -m &quot;your message&quot;
   git push origin source
 </code></pre></div>
 <p>上述命令将博客开发源代码提交到github pages仓库source分支。 
-- 新机器上pull代码</p>
+  - 新机器上pull代码</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  git clone -b source (url) octopress // 克隆source分支到本地octopress目录，存放着博客源码
   cd octopress
   git clone (url) _deploy // 克隆master分支到_deploy目录，存放着博客网页内容
