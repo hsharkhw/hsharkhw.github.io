@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-07-22T15:45:44+08:00</updated>
+  <updated>2019-07-22T16:10:45+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -174,7 +174,7 @@ rake setup_github_pages
 
 <ul>
 <li><p>在source/_includes/custom/asides/中新建clustrmaps.html文件，文件中添加对clustrmap的调用。</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  &lt;script type=&quot;text/javascript&quot; id=&quot;clustrmaps&quot; src=&quot;//cdn.clustrmaps.com/map_v2.js?u=***&quot;&gt;&lt;/script&gt;
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;script type=&quot;text/javascript&quot; id=&quot;clustrmaps&quot; src=&quot;//cdn.clustrmaps.com/map_v2.js?u=***&quot;&gt;&lt;/script&gt;
 </code></pre></div></li>
 <li><p>在_config.yml中修改关于asides的设置。 </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/clustrmaps.html]
