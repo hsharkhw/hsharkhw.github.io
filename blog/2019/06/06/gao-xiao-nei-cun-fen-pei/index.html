@@ -85,21 +85,21 @@
   </header>
 
 
-<div class="entry-content"><h1>背景</h1>
+<div class="entry-content"><h1 id="part-6542e9f0c8a">背景</h1>
 
 <p>针对大量小内存分配场景下（例如，企业通讯录，每个用户信息对应一个json node），系统调用malloc/calloc等重复向系统申请内存资源，导致系统性能低下。</p>
 
 <!--more-->
 
-<h1>解决方案</h1>
+<h1 id="part-2e54eaf41ba93e79">解决方案</h1>
 
-<h2>核心思想</h2>
+<h2 id="part-2ccb2d3d9336ff29">核心思想</h2>
 
 <p>每次向系统申请固定大小的内存资源，每次用户申请小内存资源时，直接从应用进程已申请的内存资源中获取。</p>
 
-<h2>数据结构</h2>
+<h2 id="part-2c8e0059fc0b13ae">数据结构</h2>
 
-<p><code>hello world;</code></p>
+<p><code class="prettyprint">hello world;</code></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -114,7 +114,7 @@
 </span><span class='line'>    char ptr[0];
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
-<h2>知识点</h2>
+<h2 id="part-3786f3a926bd7af">知识点</h2>
 
 <ul>
 <li>在结构体内引入指针，实现对特定地址便宜的标记。</li>
@@ -128,7 +128,7 @@
 </ul></li>
 </ul>
 
-<h2>参考文章</h2>
+<h2 id="part-2bb23717e7a4ff3b">参考文章</h2>
 
 <ul>
 <li><a href="https://github.com/acl-dev/acl/">ACL: https://github.com/acl-dev/acl/</a></li>
