@@ -4,7 +4,7 @@
   <title><![CDATA[hshark's blog]]></title>
   <link href="http://hsharkhw.github.io/atom.xml" rel="self"/>
   <link href="http://hsharkhw.github.io/"/>
-  <updated>2019-07-22T15:32:07+08:00</updated>
+  <updated>2019-07-22T15:37:19+08:00</updated>
   <id>http://hsharkhw.github.io/</id>
   <author>
     <name><![CDATA[hshark]]></name>
@@ -194,18 +194,18 @@ rake setup_github_pages
 <li>在<a href="https://commenthub.herokuapp.com">commenthub官网</a>申请ID, 并填写博客地址进行绑定。</li>
 <li>在<em>config.yml配置`commenthub</em>id`。</li>
 <li><p>在_layouts/post.html中添加一下代码，显示评论模块。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">{% if site.commenthub_id and page.comments == true %}
+  &lt;section&gt;
+      &lt;h1&gt;评论&lt;/h1&gt;
+      &lt;div id=&quot;commenthub_thread&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+  &lt;/section&gt;
+{% endif %}
 
-<p>{% if site.commenthub<em>id and page.comments == true %}
-     <section>
-         <h1>评论</h1>
-         &lt;div id=&quot;commenthub</em>thread&quot; aria-live=&quot;polite&quot;&gt;</div>
-     </section>
-   {% endif %}</p>
-
-<p><section>
-       <h1>评论</h1>
-       <div id="commenthub_thread" aria-live="polite"></div>
-   </section></p></li>
+&lt;section&gt;
+    &lt;h1&gt;评论&lt;/h1&gt;
+    &lt;div id=&quot;commenthub_thread&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+</code></pre></div></li>
 <li><p>创建commenthub.html文件</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">{% comment %} Load script if commenthub comments are enabled and &#39;page.comments&#39; is either empty (index) or set to true {% endcomment %}
 {% if site.commenthub_id and page.comments != false %}
