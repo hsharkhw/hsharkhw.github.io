@@ -143,10 +143,10 @@ rake new_post[&quot;title&quot;] // 添加新的博客
 rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
 </code></pre></div>
 <p>如果调用上述命令，出现rake版本不匹配错误，可以通过添加bundle exec rake xxx解决。
-  - 目录结构</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  - source目录为相关模版文件。
-  - _deploy目录为根据source目录中相关模块，生成静态文件。
-  - public目录为最终推送到github的文件列表，从_deploy拷贝而来。
+- 目录结构</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">- source目录为相关模版文件。
+- _deploy目录为根据source目录中相关模块，生成静态文件。
+- public目录为最终推送到github的文件列表，从_deploy拷贝而来。
 </code></pre></div>
 <ul>
 <li>源代码提交</li>
@@ -200,10 +200,11 @@ rake new_page[&quot;title&quot;] // 添加新的页面，例如tab
       <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;commenthub_thread&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;/section&gt;</span>
 {% endif %}
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html">  <span class="nt">&lt;section&gt;</span>
-      <span class="nt">&lt;h1&gt;</span>评论<span class="nt">&lt;/h1&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;commenthub_thread&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;/section&gt;</span>
+
+<span class="nt">&lt;section&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>评论<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;commenthub_thread&quot;</span> <span class="na">aria-live=</span><span class="s">&quot;polite&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
 </code></pre></div></li>
 <li><p>创建commenthub.html文件</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span><span class="o">%</span> <span class="nx">comment</span> <span class="o">%</span><span class="p">}</span> <span class="nx">Load</span> <span class="nx">script</span> <span class="k">if</span> <span class="nx">commenthub</span> <span class="nx">comments</span> <span class="nx">are</span> <span class="nx">enabled</span> <span class="nx">and</span> <span class="s1">&#39;page.comments&#39;</span> <span class="nx">is</span> <span class="nx">either</span> <span class="nx">empty</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="nx">or</span> <span class="nx">set</span> <span class="nx">to</span> <span class="kc">true</span> <span class="p">{</span><span class="o">%</span> <span class="nx">endcomment</span> <span class="o">%</span><span class="p">}</span>
